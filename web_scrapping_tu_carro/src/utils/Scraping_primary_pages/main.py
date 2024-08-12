@@ -56,10 +56,8 @@ class main_scraper():
                     links_car_list = []
 
                     for car in cars:
-                        car_name = car.find('img', alt = True)
-                        pattern = r'<img[^>]*alt="([^"]*)"'
-                        car_name_adjusted = re.findall(pattern, str(car_name))
-                        car_name_list.append(car_name_adjusted)
+                        car_name = car.find('h2', class_ = 'poly-box').text
+                        car_name_list.append(car_name)
                     # Guardamos los valores en el dataframe que va a devolver la funcion
                     df = pd.DataFrame(car_name_list, columns=['Nombre_del_vehiculo'])
 
