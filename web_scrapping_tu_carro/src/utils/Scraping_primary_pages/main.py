@@ -63,15 +63,12 @@ class main_scraper():
 
                     for car in cars:
                         # Inicializamos los valores en None de forma tal que en caso de que NO se traingan valores, la funcion no genere error
-                        price_car_adjusted = None
+                        price_car = None
                         try:
-                            price_car = car.find('span', class_ = 'andes-money-amount ui-search-price__part ui-search-price__part--medium andes-money-amount--cents-superscript')
-                            pattern = r'aria-label="(\d+)'
-                            price_car_adjusted = re.findall(pattern, str(price_car))
-                            price_car_adjusted = int(price_car_adjusted[0]) if price_car_adjusted else None
+                            price_car = car.find('span', class_ = 'andes-money-amount__fraction').text
                         except (ValueError, IndexError):
                             pass
-                        price_car_list.append(price_car_adjusted)
+                        price_car_list.append(price_car)
                     # Guardamos los valores en el dataframe que va a devolver la funcion
                     df['Precio_del_vehiculo'] = price_car_list
 
@@ -81,10 +78,12 @@ class main_scraper():
                         km_car = None
                         try:
                             # Extraemos el modelo del carro
-                            model_car = int(car.find_all('li', class_='ui-search-card-attributes__attribute')[0].text)
+                             # Extraemos el modelo del carro
+                            model_car = int(car.find_all('li', class_ = 'poly-attributes-list__item poly-attributes-list__bar')[0].text)
+                            
                             # Extraemos el kilometraje del carro
-                            km_car = car.find_all('li', class_='ui-search-card-attributes__attribute')[1].text
-                            km_car = int(km_car.replace(" Km", "").replace(".", ""))
+                            km_car = car.find_all('li', class_ = 'poly-attributes-list__item poly-attributes-list__bar')[1].text
+                            km_car = int(km_car.replace(" Km","").replace(".",""))                            
                         except (ValueError, IndexError):
                             pass
                         model_car_list.append(model_car)
@@ -97,7 +96,7 @@ class main_scraper():
                         # Inicializamos los valores en None de forma tal que en caso de que NO se traingan valores, la funcion no genere error
                         location_car = None
                         try:
-                            location_car = car.find('span', class_='ui-search-item__group__element ui-search-item__location').text
+                            location_car = car.find('span', class_ = 'poly-component__location').text
                         except (AttributeError, ValueError):
                             pass
                         location_car_list.append(location_car)
@@ -108,7 +107,7 @@ class main_scraper():
                         # Inicializamos los valores en None de forma tal que en caso de que NO se traingan valores, la funcion no genere error
                         link_car = None
                         try:
-                            link_car = car.find('a', class_='ui-search-link')['href']
+                            link_car = car.find('a', class_ = 'poly-component__title')['href']
                         except (TypeError, KeyError, AttributeError):
                             pass
                         links_car_list.append(link_car)
