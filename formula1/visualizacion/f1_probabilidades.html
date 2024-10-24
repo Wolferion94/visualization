@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Fórmula 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+        .left {
+            width: 30%;
+            padding: 20px;
+        }
+        .right {
+            width: 60%;
+            padding: 20px;
+            position: relative;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* Estilo de la pista */
+        .race-track {
+            width: 100%; /* Mantiene el ancho completo */
+            height: 350px; /* Ajusta el alto para acortar la pista */
+            background-color: #444;
+            position: relative;
+            border: 2px solid black;
+            background-image: url('carretera.png'); /* Añade la imagen de la carretera */
+            background-size: contain; /* Hace que la imagen cubra todo el contenedor */
+            background-position: right center; /* Muestra la parte superior de la imagen */
+            background-repeat: no-repeat; /* No repite la imagen */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            transform: rotate(0deg); /* Mantiene la rotación de 90 grados */
+            transform-origin: center; /* Mantiene la rotación centrada */
+            margin-top: 50px; /* Ajusta el margen para colocar la pista donde desees */
+            overflow: hidden; /* Oculta cualquier contenido que se salga del contenedor */
+        }
+
+
+        .lane {
+            width: 90%;
+            height: 4px;
+            background-color: white;
+            position: absolute;
+            top: 50%;
+        }
+        .car {
+            width: 50px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .car img {
+            width: 100%;
+            transform: rotate(0deg);
+        }
+        .car p {
+            text-align: center;
+            color: white;
+            margin: 0;
+        }
+
+        /* Detalles decorativos */
+        .grass {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background-color: green;
+        }
+
+        .grass-top {
+            top: 0;
+        }
+
+        .grass-bottom {
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Parte izquierda: Tabla con conductores y probabilidades -->
+        <div class="left">
+            <h2>Conductores y Probabilidades</h2>
+            <table>
+                <tr>
+                    <th>ID Conductor</th>
+                    <th>Probabilidad</th>
+                </tr>
+                
+                <tr>
+                    <td>DR001</td>
+                    <td>0.85</td>
+                </tr>
+                
+                <tr>
+                    <td>DR002</td>
+                    <td>0.65</td>
+                </tr>
+                
+                <tr>
+                    <td>DR003</td>
+                    <td>0.45</td>
+                </tr>
+                
+                <tr>
+                    <td>DR004</td>
+                    <td>0.3</td>
+                </tr>
+                
+            </table>
+        </div>
+
+        <!-- Parte derecha: Representación visual de la carrera -->
+        <div class="right">
+            <h2>Carros organizados por probabilidad</h2>
+            <div class="race-track">
+                <div class="lane"></div>
+                <!-- Decoración de césped en la parte superior e inferior -->
+                <div class="grass grass-top"></div>
+                <div class="grass grass-bottom"></div>
+                
+                <div class="car" style="top: calc(100% * 0.0);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR001</p>
+                </div>
+                
+                <div class="car" style="top: calc(100% * 0.25);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR002</p>
+                </div>
+                
+                <div class="car" style="top: calc(100% * 0.5);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR003</p>
+                </div>
+                
+                <div class="car" style="top: calc(100% * 0.75);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR004</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
