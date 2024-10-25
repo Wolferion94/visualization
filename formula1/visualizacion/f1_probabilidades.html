@@ -48,27 +48,16 @@
             position: relative;
             border: 2px solid black;
             background-image: url('carretera.png'); /* Añade la imagen de la carretera */
-            background-size: contain; /* Hace que la imagen cubra todo el contenedor */
-            background-position: right center; /* Muestra la parte superior de la imagen */
+            background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+            background-position: center; /* Centra la imagen */
             background-repeat: no-repeat; /* No repite la imagen */
             display: flex;
-            flex-direction: column;
-            justify-content: space-around;
+            justify-content: flex-start; /* Alinea los autos horizontalmente al principio */
             align-items: center;
-            transform: rotate(0deg); /* Mantiene la rotación de 90 grados */
-            transform-origin: center; /* Mantiene la rotación centrada */
             margin-top: 50px; /* Ajusta el margen para colocar la pista donde desees */
             overflow: hidden; /* Oculta cualquier contenido que se salga del contenedor */
         }
 
-
-        .lane {
-            width: 90%;
-            height: 4px;
-            background-color: white;
-            position: absolute;
-            top: 50%;
-        }
         .car {
             width: 50px;
             position: absolute;
@@ -78,7 +67,6 @@
         }
         .car img {
             width: 100%;
-            transform: rotate(0deg);
         }
         .car p {
             text-align: center;
@@ -134,6 +122,36 @@
                     <td>0.3</td>
                 </tr>
                 
+                <tr>
+                    <td>DR005</td>
+                    <td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>DR006</td>
+                    <td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>DR007</td>
+                    <td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>DR008</td>
+                    <td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>DR009</td>
+                    <td>0.0</td>
+                </tr>
+                
+                <tr>
+                    <td>DR0010</td>
+                    <td>0.0</td>
+                </tr>
+                
             </table>
         </div>
 
@@ -141,29 +159,69 @@
         <div class="right">
             <h2>Carros organizados por probabilidad</h2>
             <div class="race-track">
-                <div class="lane"></div>
-                <!-- Decoración de césped en la parte superior e inferior -->
                 <div class="grass grass-top"></div>
                 <div class="grass grass-bottom"></div>
+
+                <!-- Limitar el número de autos a un máximo de 10 -->
                 
-                <div class="car" style="top: calc(100% * 0.0);">
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 0 / 10);">
                     <img src="car.png" alt="Formula 1 Car">
                     <p>DR001</p>
                 </div>
                 
-                <div class="car" style="top: calc(100% * 0.25);">
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 1 / 10);">
                     <img src="car.png" alt="Formula 1 Car">
                     <p>DR002</p>
                 </div>
                 
-                <div class="car" style="top: calc(100% * 0.5);">
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 2 / 10);">
                     <img src="car.png" alt="Formula 1 Car">
                     <p>DR003</p>
                 </div>
                 
-                <div class="car" style="top: calc(100% * 0.75);">
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 3 / 10);">
                     <img src="car.png" alt="Formula 1 Car">
                     <p>DR004</p>
+                </div>
+                
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 4 / 10);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR005</p>
+                </div>
+                
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 5 / 10);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR006</p>
+                </div>
+                
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 6 / 10);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR007</p>
+                </div>
+                
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 7 / 10);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR008</p>
+                </div>
+                
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 8 / 10);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR009</p>
+                </div>
+                
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * 9 / 10);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>DR0010</p>
                 </div>
                 
             </div>

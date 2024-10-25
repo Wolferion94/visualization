@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Fórmula 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .left {
+            width: 30%;
+            padding: 20px;
+        }
+
+        .right {
+            width: 60%;
+            padding: 20px;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* Estilo de la pista */
+        .race-track {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background-image: url('carretera.png'); /* Imagen de la pista */
+            background-size: cover;
+            background-position: center;
+            z-index: 1;  /* Pista en el fondo */
+            padding-top: 20px;  /* Ajuste para dar espacio a los carros */
+            padding-bottom: 20px;  /* Ajuste para la parte inferior */
+        }
+
+        /* Contenedor de los carros */
+        .cars-container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 350px;  /* Ajusta al mismo tamaño de la pista */
+            z-index: 2;  /* Carros sobre la pista */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 100px 0;  /* Añade espacio arriba y abajo para los carros */
+        }
+
+        /* Estilo de cada fila de carros */
+        .car-row {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+            gap: 10px; /* Ajusta el espacio entre carros */
+        }
+
+        /* Mueve la primera fila hacia adelante */
+        .car-row:first-child {
+            margin-left: 100px; /* Ajusta este valor para avanzar la fila superior */
+        }
+
+
+        /* Estilo de cada carro */
+        .car {
+            position: relative;
+            text-align: center;
+            width: 70px; /* Tamaño del carro */
+            margin: 0 50px;
+        }
+
+        .car img {
+            width: 100%;
+        }
+
+        .car p {
+            color: white;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Detalles decorativos */
+        .grass {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background-color: green;
+            z-index: 0;
+        }
+
+        .grass-top {
+            top: 0;
+        }
+
+        .grass-bottom {
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Parte izquierda: Tabla con conductores y probabilidades -->
+        <div class="left">
+            <h2>Conductores y Probabilidades</h2>
+            <table>
+                <tr>
+                    <th>ID Conductor</th>
+                    <th>Probabilidad</th>
+                </tr>
+                <!-- Aquí los datos de los conductores se llenan dinámicamente -->
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.driverId }}</td>
+                    <td>{{ row.probability }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- Parte derecha: Pista y carros -->
+        <div class="right">
+            <h2>Carros organizados por probabilidad</h2>
+            
+            <!-- Contenedor de la pista -->
+            <div class="race-track">
+                <!-- Decoración de césped en la parte superior e inferior -->
+                <div class="grass grass-top"></div>
+                <div class="grass grass-bottom"></div>
+            </div>
+
+            <!-- Contenedor de los carros en dos filas -->
+            <div class="cars-container">
+                <div class="car-row">
+                    <!-- Primera fila de carros -->
+                    {% for row in data[:5] %}
+                    <div class="car">
+                        <img src="car.png" alt="Formula 1 Car">
+                        <p>{{ row.driverId }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="car-row">
+                    <!-- Segunda fila de carros -->
+                    {% for row in data[5:] %}
+                    <div class="car">
+                        <img src="car.png" alt="Formula 1 Car">
+                        <p>{{ row.driverId }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
