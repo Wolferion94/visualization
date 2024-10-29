@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Fórmula 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+            background-image: url('fondo.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .left, .right {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para mejor legibilidad */
+            border-radius: 8px; /* Bordes redondeados */
+        }
+
+        .left {
+            width: 30%;
+            margin-left: 30px;
+        }
+
+        .right {
+            width: 60%;
+            position: relative;
+            margin-right: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente blanco */
+            color: black; /* Texto negro en la tabla */
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        /* Estilo de la pista */
+        .race-track {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            background-image: url('carretera.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        /* Contenedor de los carros */
+        .cars-container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 350px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        /* Estilo de cada fila de carros */
+        .car-row {
+            display: flex;
+            justify-content: flex-start; /* Ajuste para carros más juntos */
+            align-items: center;
+            width: 100%;
+            height: 50%;
+            gap: 130px;
+        }
+
+        /* Mueve la primera fila hacia adelante */
+        .car-row:first-child {
+            margin-left: 100px;
+        }
+
+        /* Estilo de cada carro */
+        .car {
+            position: relative;
+            text-align: center;
+            width: 70px;
+        }
+
+        .car img {
+            width: 100%;
+        }
+
+        .car p {
+            color: white;
+            margin: 0;
+            text-align: center;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        /* Detalles decorativos */
+        .grass {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background-color: green;
+            z-index: 0;
+        }
+
+        .grass-top {
+            top: 0;
+        }
+
+        .grass-bottom {
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Tabla de posiciones -->
+        <div class="left">
+            <h2>Tabla de posiciones</h2>
+            <table>
+                <tr>
+                    <th>ID Conductor</th>
+                    <th>Probabilidad</th>
+                </tr>
+                
+                <tr>
+                    <td>Lando Norris - McLaren</td>
+                    <td>0.994</td>
+                </tr>
+                
+                <tr>
+                    <td>Charles Leclerc - Ferrari</td>
+                    <td>0.988</td>
+                </tr>
+                
+                <tr>
+                    <td>Esteban Ocon - Alpine F1 Team</td>
+                    <td>0.907</td>
+                </tr>
+                
+                <tr>
+                    <td>George Russell - Mercedes</td>
+                    <td>0.699</td>
+                </tr>
+                
+                <tr>
+                    <td>Lewis Hamilton - Mercedes</td>
+                    <td>0.518</td>
+                </tr>
+                
+                <tr>
+                    <td>Alexander Albon - Williams</td>
+                    <td>0.5</td>
+                </tr>
+                
+                <tr>
+                    <td>Daniel Ricciardo - RB F1 Team</td>
+                    <td>0.5</td>
+                </tr>
+                
+                <tr>
+                    <td>Nico Hülkenberg - Haas F1 Team</td>
+                    <td>0.5</td>
+                </tr>
+                
+                <tr>
+                    <td>Kevin Magnussen - Haas F1 Team</td>
+                    <td>0.5</td>
+                </tr>
+                
+                <tr>
+                    <td>Lance Stroll - Aston Martin</td>
+                    <td>0.5</td>
+                </tr>
+                
+            </table>
+        </div>
+
+        <!-- Pista con los autos en el orden especificado -->
+        <div class="right">
+            <h2>Posición vehículos</h2>
+            <div class="race-track">
+                <div class="grass grass-top"></div>
+                <div class="cars-container">
+                    <div class="car-row">
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Kevin Magnussen - Haas F1 Team</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Daniel Ricciardo - RB F1 Team</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Lewis Hamilton - Mercedes</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Esteban Ocon - Alpine F1 Team</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Lando Norris - McLaren</p>
+                        </div>
+                        
+                    </div>
+                    <div class="car-row">
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Lance Stroll - Aston Martin</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Nico Hülkenberg - Haas F1 Team</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Alexander Albon - Williams</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>George Russell - Mercedes</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Charles Leclerc - Ferrari</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="grass grass-bottom"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
