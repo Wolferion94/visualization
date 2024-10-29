@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Fórmula 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+        .left {
+            width: 30%;
+            padding: 20px;
+        }
+        .right {
+            width: 60%;
+            padding: 20px;
+            position: relative;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* Estilo de la pista */
+        .race-track {
+            width: 100%; /* Mantiene el ancho completo */
+            height: 350px; /* Ajusta el alto para acortar la pista */
+            background-color: #444;
+            position: relative;
+            border: 2px solid black;
+            background-image: url('carretera.png'); /* Añade la imagen de la carretera */
+            background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* No repite la imagen */
+            display: flex;
+            justify-content: flex-start; /* Alinea los autos horizontalmente al principio */
+            align-items: center;
+            margin-top: 50px; /* Ajusta el margen para colocar la pista donde desees */
+            overflow: hidden; /* Oculta cualquier contenido que se salga del contenedor */
+        }
+
+        .car {
+            width: 50px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .car img {
+            width: 100%;
+        }
+        .car p {
+            text-align: center;
+            color: white;
+            margin: 0;
+        }
+
+        /* Detalles decorativos */
+        .grass {
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background-color: green;
+        }
+
+        .grass-top {
+            top: 0;
+        }
+
+        .grass-bottom {
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Parte izquierda: Tabla con conductores y probabilidades -->
+        <div class="left">
+            <h2>Conductores y Probabilidades</h2>
+            <table>
+                <tr>
+                    <th>ID Conductor</th>
+                    <th>Probabilidad</th>
+                </tr>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.driverId }}</td>
+                    <td>{{ row.probability }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <!-- Parte derecha: Representación visual de la carrera -->
+        <div class="right">
+            <h2>Carros organizados por probabilidad</h2>
+            <div class="race-track">
+                <div class="grass grass-top"></div>
+                <div class="grass grass-bottom"></div>
+
+                <!-- Limitar el número de autos a un máximo de 10 -->
+                {% for row in data[:10] %}
+                <!-- Posiciona los autos horizontalmente en función de su probabilidad -->
+                <div class="car" style="left: calc(100% * {{ loop.index0 }} / 10);">
+                    <img src="car.png" alt="Formula 1 Car">
+                    <p>{{ row.driverId }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -2,9 +2,11 @@ from utils.Scraping_primary_pages import main_scraper
 from utils.Scraping_secondary_pages import individual_scraper
 import pandas as pd
 
+marca = None
 #-----------------------------------------------WEB SCRAPING PAGINA PRINCIPAL-----------------------------------------------
 # Iniciamos nuestra clase main_scraper para poder traer la informacio de las paginas principales.
-scraper = main_scraper(url='https://carros.tucarro.com.co/',brand='ford')
+scraper = main_scraper(url='https://carros.tucarro.com.co/',brand=marca)
+print(marca)
 
 # Definimos cuantas paginas principales vamos a scrapear
 paginas = scraper.paginas_a_scrapear(page_num=10)  # Cambiar a la cantidad de páginas que deseas scrapear

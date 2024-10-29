@@ -1,0 +1,3 @@
+SELECT DISTINCT year
+FROM races
+ORDER BY year ASC;
