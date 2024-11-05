@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrera de FÃ³rmula 1</title>
+    <title>Carrera de Fórmula 1</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: row;
-            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
             margin: 0;
             padding: 0;
             background-image: url('fondo.png');
@@ -22,14 +22,14 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            width: 100%;
+            width: 90%;
             margin-top: 40px;
         }
 
         .left, .right {
             padding: 20px;
-            background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para mejor legibilidad */
-            border-radius: 8px; /* Bordes redondeados */
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
         }
 
         .left {
@@ -43,11 +43,20 @@
             margin-right: 30px;
         }
 
+        /* Estilo de contenedores */
+        .table-container {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+            border-radius: 8px; /* Bordes redondeados */
+            width: 90%;
+            margin: 20px auto; /* Centrado en la página */
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente blanco */
-            color: black; /* Texto negro en la tabla */
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
         }
 
         table, th, td {
@@ -59,12 +68,17 @@
             text-align: center;
         }
 
+        /* Estilo de mapa de calor */
+        .heatmap {
+            color: white;
+            font-weight: bold;
+        }
+
         h2 {
             color: white;
             text-shadow: 1px 1px 2px black;
         }
 
-        /* Estilo de la pista */
         .race-track {
             position: relative;
             width: 100%;
@@ -77,7 +91,6 @@
             padding-bottom: 20px;
         }
 
-        /* Contenedor de los carros */
         .cars-container {
             position: absolute;
             top: 0;
@@ -90,22 +103,19 @@
             padding: 10px 0;
         }
 
-        /* Estilo de cada fila de carros */
         .car-row {
             display: flex;
-            justify-content: flex-start; /* Ajuste para carros mÃ¡s juntos */
+            justify-content: flex-start;
             align-items: center;
             width: 100%;
             height: 50%;
-            gap: 130px;
+            gap: 100px;
         }
 
-        /* Mueve la primera fila hacia adelante */
         .car-row:first-child {
             margin-left: 100px;
         }
 
-        /* Estilo de cada carro */
         .car {
             position: relative;
             text-align: center;
@@ -123,7 +133,6 @@
             text-shadow: 1px 1px 2px black;
         }
 
-        /* Detalles decorativos */
         .grass {
             position: absolute;
             width: 100%;
@@ -139,11 +148,48 @@
         .grass-bottom {
             bottom: 0;
         }
+
+        /* Estilos para la tabla de posiciones F1 */
+        .constructor-cell {
+            font-weight: bold;
+        }
+
+        .points-cell {
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Contenedor de la barra de victorias */
+        .wins-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 20px; /* Altura aumentada para mayor visibilidad */
+            margin: 0 auto; /* Centrado */
+        }
+
+        /* Estilo de la barra de victorias */
+        .wins-bar {
+            height: 100%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Colores de fondo para la columna Constructor */
+        .constructor-cell {
+            color: white;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Tabla de posiciones -->
         <div class="left">
             <h2>Tabla de posiciones</h2>
             <table>
@@ -153,61 +199,80 @@
                 </tr>
                 
                 <tr>
+                    <td>Max Verstappen - Red Bull</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 1.0);">
+                        100.0%
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Carlos Sainz - Ferrari</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.606);">
+                        60.6%
+                    </td>
+                </tr>
+                
+                <tr>
                     <td>Lando Norris - McLaren</td>
-                    <td>0.994</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.533);">
+                        53.3%
+                    </td>
                 </tr>
                 
                 <tr>
                     <td>Charles Leclerc - Ferrari</td>
-                    <td>0.988</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.495);">
+                        49.5%
+                    </td>
                 </tr>
                 
                 <tr>
                     <td>Esteban Ocon - Alpine F1 Team</td>
-                    <td>0.907</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.354);">
+                        35.4%
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Pierre Gasly - Alpine F1 Team</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.269);">
+                        26.9%
+                    </td>
                 </tr>
                 
                 <tr>
                     <td>George Russell - Mercedes</td>
-                    <td>0.699</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.216);">
+                        21.6%
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Fernando Alonso - Aston Martin</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.066);">
+                        6.6%
+                    </td>
                 </tr>
                 
                 <tr>
                     <td>Lewis Hamilton - Mercedes</td>
-                    <td>0.518</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.063);">
+                        6.3%
+                    </td>
                 </tr>
                 
                 <tr>
-                    <td>Alexander Albon - Williams</td>
-                    <td>0.5</td>
-                </tr>
-                
-                <tr>
-                    <td>Daniel Ricciardo - RB F1 Team</td>
-                    <td>0.5</td>
-                </tr>
-                
-                <tr>
-                    <td>Nico HÃ¼lkenberg - Haas F1 Team</td>
-                    <td>0.5</td>
-                </tr>
-                
-                <tr>
-                    <td>Kevin Magnussen - Haas F1 Team</td>
-                    <td>0.5</td>
-                </tr>
-                
-                <tr>
-                    <td>Lance Stroll - Aston Martin</td>
-                    <td>0.5</td>
+                    <td>Oscar Piastri - McLaren</td>
+                    <td class="heatmap" style="background-color: rgba(0, 128, 0, 0.047);">
+                        4.7%
+                    </td>
                 </tr>
                 
             </table>
         </div>
 
-        <!-- Pista con los autos en el orden especificado -->
         <div class="right">
-            <h2>PosiciÃ³n vehÃ­culos</h2>
+            <h2>Posición vehículos</h2>
             <div class="race-track">
                 <div class="grass grass-top"></div>
                 <div class="cars-container">
@@ -215,17 +280,12 @@
                         
                         <div class="car">
                             <img src="car.png" alt="Formula 1 Car">
-                            <p>Kevin Magnussen - Haas F1 Team</p>
-                        </div>
-                        
-                        <div class="car">
-                            <img src="car.png" alt="Formula 1 Car">
-                            <p>Daniel Ricciardo - RB F1 Team</p>
-                        </div>
-                        
-                        <div class="car">
-                            <img src="car.png" alt="Formula 1 Car">
                             <p>Lewis Hamilton - Mercedes</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>George Russell - Mercedes</p>
                         </div>
                         
                         <div class="car">
@@ -238,32 +298,37 @@
                             <p>Lando Norris - McLaren</p>
                         </div>
                         
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Max Verstappen - Red Bull</p>
+                        </div>
+                        
                     </div>
                     <div class="car-row">
                         
                         <div class="car">
                             <img src="car.png" alt="Formula 1 Car">
-                            <p>Lance Stroll - Aston Martin</p>
+                            <p>Oscar Piastri - McLaren</p>
                         </div>
                         
                         <div class="car">
                             <img src="car.png" alt="Formula 1 Car">
-                            <p>Nico HÃ¼lkenberg - Haas F1 Team</p>
+                            <p>Fernando Alonso - Aston Martin</p>
                         </div>
                         
                         <div class="car">
                             <img src="car.png" alt="Formula 1 Car">
-                            <p>Alexander Albon - Williams</p>
-                        </div>
-                        
-                        <div class="car">
-                            <img src="car.png" alt="Formula 1 Car">
-                            <p>George Russell - Mercedes</p>
+                            <p>Pierre Gasly - Alpine F1 Team</p>
                         </div>
                         
                         <div class="car">
                             <img src="car.png" alt="Formula 1 Car">
                             <p>Charles Leclerc - Ferrari</p>
+                        </div>
+                        
+                        <div class="car">
+                            <img src="car.png" alt="Formula 1 Car">
+                            <p>Carlos Sainz - Ferrari</p>
                         </div>
                         
                     </div>
@@ -272,5 +337,109 @@
             </div>
         </div>
     </div>
+
+    <div class="table-container">
+        <h2>Top 5 Pilotos F1 (Actual, tomado de: www.ergast.com)</h2>
+        <table>
+            <tr>
+                <th>Posición</th>
+                <th>Nombre</th>
+                <th>Puntos</th>
+                <th>Victorias</th>
+                <th>Constructor</th>
+            </tr>
+            
+            <tr>
+                <td>1</td>
+                <td>Max Verstappen</td>
+                <td class="points-cell" style="background-color: rgba(0, 128, 0, 1.0);">
+                    393
+                </td>
+                <td>
+                    <div class="wins-bar-container">
+                        <div class="wins-bar" style="width: 100.0%;">
+                            8
+                        </div>
+                    </div>
+                </td>
+                <td class="constructor-cell" style="background-color: #1E90FF;">
+                    Red Bull
+                </td>
+            </tr>
+            
+            <tr>
+                <td>2</td>
+                <td>Lando Norris</td>
+                <td class="points-cell" style="background-color: rgba(0, 128, 0, 0.8422391857506362);">
+                    331
+                </td>
+                <td>
+                    <div class="wins-bar-container">
+                        <div class="wins-bar" style="width: 37.5%;">
+                            3
+                        </div>
+                    </div>
+                </td>
+                <td class="constructor-cell" style="background-color: #FF8C00;">
+                    McLaren
+                </td>
+            </tr>
+            
+            <tr>
+                <td>3</td>
+                <td>Charles Leclerc</td>
+                <td class="points-cell" style="background-color: rgba(0, 128, 0, 0.7811704834605598);">
+                    307
+                </td>
+                <td>
+                    <div class="wins-bar-container">
+                        <div class="wins-bar" style="width: 37.5%;">
+                            3
+                        </div>
+                    </div>
+                </td>
+                <td class="constructor-cell" style="background-color: #FF6347;">
+                    Ferrari
+                </td>
+            </tr>
+            
+            <tr>
+                <td>4</td>
+                <td>Oscar Piastri</td>
+                <td class="points-cell" style="background-color: rgba(0, 128, 0, 0.6666666666666666);">
+                    262
+                </td>
+                <td>
+                    <div class="wins-bar-container">
+                        <div class="wins-bar" style="width: 25.0%;">
+                            2
+                        </div>
+                    </div>
+                </td>
+                <td class="constructor-cell" style="background-color: #FF8C00;">
+                    McLaren
+                </td>
+            </tr>
+            
+            <tr>
+                <td>5</td>
+                <td>Carlos Sainz</td>
+                <td class="points-cell" style="background-color: rgba(0, 128, 0, 0.6208651399491094);">
+                    244
+                </td>
+                <td>
+                    <div class="wins-bar-container">
+                        <div class="wins-bar" style="width: 25.0%;">
+                            2
+                        </div>
+                    </div>
+                </td>
+                <td class="constructor-cell" style="background-color: #FF6347;">
+                    Ferrari
+                </td>
+            </tr>
+            
+        </table>
+    </div>        
 </body>
 </html>
